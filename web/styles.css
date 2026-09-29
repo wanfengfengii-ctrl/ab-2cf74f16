@@ -1,0 +1,186 @@
+:root {
+  --ink: #1f2a36;
+  --muted: #5b6b7b;
+  --line: #d7e0e8;
+  --bg: #f4f7fa;
+  --card: #ffffff;
+  --enzyme-a: #c0392b;
+  --enzyme-b: #2471a3;
+  --enzyme-ab: #7d3c98;
+  --ok: #1e8449;
+  --warn: #9c6500;
+  --error: #b03a2e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+.site-header {
+  background: #20344a;
+  color: #fff;
+  padding: 24px 20px;
+}
+
+.site-header h1 { margin: 0 0 8px; font-size: 22px; }
+.site-header p { margin: 0; max-width: 880px; color: #c9d6e3; font-size: 14px; }
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+}
+
+.panel, .card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px 20px;
+}
+
+.field { margin-bottom: 14px; }
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.field input, .field textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+  background: #fbfdfe;
+}
+
+.field input:focus, .field textarea:focus {
+  outline: 2px solid #7fb2dd;
+  outline-offset: 0;
+  border-color: #7fb2dd;
+}
+
+.actions { display: flex; gap: 10px; margin-top: 6px; }
+
+button {
+  font: inherit;
+  padding: 8px 22px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: #eef2f6;
+  cursor: pointer;
+}
+
+button.primary {
+  background: #2471a3;
+  border-color: #2471a3;
+  color: #fff;
+  font-weight: 600;
+}
+
+button:hover { filter: brightness(0.96); }
+
+.hint { color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+
+.card h2 { margin-top: 0; font-size: 19px; }
+.card.ok { border-left: 5px solid var(--ok); }
+.card.warn { border-left: 5px solid var(--warn); }
+.card.error { border-left: 5px solid var(--error); }
+.card .note { color: var(--muted); font-size: 13px; margin-top: -6px; }
+
+.divergence {
+  background: #fdf3e0;
+  border: 1px solid #f0d9a8;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+
+.map-detail { margin-top: 14px; }
+.map-detail h3 { margin: 10px 0 6px; font-size: 16px; }
+.map-detail h4 { margin: 16px 0 6px; font-size: 14px; color: var(--muted); }
+
+/* 图谱示意条 */
+.map-bar {
+  display: flex;
+  align-items: stretch;
+  margin: 10px 0 4px;
+  min-height: 64px;
+}
+
+.frag {
+  background: #eaf1f8;
+  border: 1px solid #b9c8d8;
+  border-radius: 4px;
+  min-width: 52px;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.frag-len { font-weight: 700; }
+.frag-range { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+.site {
+  flex: 0 0 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.site-enzyme { font-weight: 700; white-space: nowrap; }
+.site-line { width: 3px; flex: 1; margin: 2px 0; border-radius: 2px; }
+.site-pos { color: var(--muted); white-space: nowrap; }
+
+.site-a .site-enzyme { color: var(--enzyme-a); }
+.site-a .site-line { background: var(--enzyme-a); }
+.site-b .site-enzyme { color: var(--enzyme-b); }
+.site-b .site-line { background: var(--enzyme-b); }
+.site-ab .site-enzyme { color: var(--enzyme-ab); }
+.site-ab .site-line { background: var(--enzyme-ab); }
+
+/* 表格 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+th { background: #eef3f8; font-weight: 600; }
+
+.enzyme-tag {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.enzyme-a { background: var(--enzyme-a); }
+.enzyme-b { background: var(--enzyme-b); }
+.enzyme-ab { background: var(--enzyme-ab); }
+
+ul { margin: 8px 0; padding-left: 22px; }

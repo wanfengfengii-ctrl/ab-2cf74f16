@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1
+
+# verify 一次性服务：代码测试 → 构建 → 三种业务结论 → 网页 HTTP 冒烟，
+# 完成后自行退出并以退出码报告结果。
+FROM node:22-alpine
+WORKDIR /app
+COPY web/ web/
+COPY tests/ tests/
+COPY scripts/ scripts/
+ENV WEB_URL=http://web:80
+CMD ["node", "scripts/verify-all.js"]

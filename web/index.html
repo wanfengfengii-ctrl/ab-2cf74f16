@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>限制性内切酶图谱复原</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>限制性内切酶图谱复原</h1>
+    <p>
+      依据酶A、酶B 单酶切与双酶切的片段长度，联合复原线性质粒构建体的切点顺序。
+      所有计算仅在浏览器内完成：联合枚举双酶切片段的去重排列与内部切点归属，
+      整体反向视为同一图谱。
+    </p>
+  </header>
+
+  <main>
+    <section class="panel" aria-label="输入">
+      <div class="field">
+        <label for="total">总长度（正整数）</label>
+        <input id="total" type="text" inputmode="numeric" autocomplete="off" placeholder="如 6000">
+      </div>
+      <div class="field">
+        <label for="a-fragments">酶A 单酶切片段</label>
+        <textarea id="a-fragments" rows="2" placeholder="如 3000, 3000"></textarea>
+      </div>
+      <div class="field">
+        <label for="b-fragments">酶B 单酶切片段</label>
+        <textarea id="b-fragments" rows="2" placeholder="如 2000, 4000"></textarea>
+      </div>
+      <div class="field">
+        <label for="double-fragments">双酶切片段</label>
+        <textarea id="double-fragments" rows="2" placeholder="如 1000, 2000, 3000"></textarea>
+      </div>
+      <div class="actions">
+        <button id="solve-btn" type="button" class="primary">复原</button>
+        <button id="sample-btn" type="button">填入示例</button>
+      </div>
+      <p class="hint">
+        片段长度为正整数，可用逗号、空格或换行分隔；三组长度之和须各自等于总长度。
+        修改任一草稿后，旧结论会自动清除。
+      </p>
+    </section>
+
+    <section id="result" aria-live="polite" hidden></section>
+  </main>
+
+  <script src="solver.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

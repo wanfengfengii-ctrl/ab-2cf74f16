@@ -1,0 +1,33 @@
+# 限制性内切酶图谱复原：静态前端 + 一次性验证服务
+#
+# 网页宿主机端口由 WEB_PORT 配置（默认 8080）：
+#   WEB_PORT=9090 docker compose up --build web
+#
+# 一次性验证（代码测试、构建、三种业务结论、HTTP 冒烟），退出码即结果：
+#   docker compose up --build --abort-on-container-exit --exit-code-from verify verify
+
+services:
+  web:
+    build: .
+    image: digest-map-web
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 5s
+    restart: unless-stopped
+
+  verify:
+    build:
+      context: .
+      dockerfile: Dockerfile.verify
+    image: digest-map-verify
+    environment:
+      WEB_URL: http://web:80
+    depends_on:
+      web:
+        condition: service_healthy
+    restart: "no"
